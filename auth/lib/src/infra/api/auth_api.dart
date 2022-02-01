@@ -15,6 +15,8 @@ class AuthApi implements IAuthApi {
   AuthApi(this.baseUrl, this._client);
 
   final http.Client _client;
+
+  /// The baseUrl where our endpoints should call.
   String baseUrl;
 
   @override
