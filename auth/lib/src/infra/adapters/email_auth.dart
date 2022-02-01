@@ -45,9 +45,11 @@ class EmailAuth implements IAuthService, ISignUpService {
   @override
   Future<Result<Token>> signIn() async {
     final result = await _api.signIn(_credential);
+
     if (result.isError) {
-      return result.asError;
+      return Result.value(Token(result.asError.toString()));
     }
+
     return Result.value(Token(result.asValue!.value));
   }
 
@@ -69,7 +71,9 @@ class EmailAuth implements IAuthService, ISignUpService {
 
     final result = await _api.signUp(credential);
 
-    if (result.isError) return result.asError;
+    if (result.isError) {
+      return Result.value(Token(result.asError.toString()));
+    }
 
     return Result.value(Token(result.asValue!.value));
   }

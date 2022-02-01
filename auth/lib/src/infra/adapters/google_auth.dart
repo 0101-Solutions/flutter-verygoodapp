@@ -34,7 +34,7 @@ class GoogleAuth implements IAuthService {
     final result = await _authApi.signIn(credential);
 
     if (result.isError) {
-      return result.asError;
+      return Result.value(Token(result.asError.toString()));
     }
 
     return Result.value(Token(result.asValue!.value));
