@@ -54,14 +54,16 @@ class EmailAuth implements IAuthService, ISignUpService {
   }
 
   @override
-  Future<void> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<void> signOut() async {
+    return await null;
   }
 
   @override
   Future<Result<Token>> signUp(
-      String email, String name, String password) async {
+    String email,
+    String name,
+    String password,
+  ) async {
     final credential = Credential(
       type: AuthType.email,
       email: email,
