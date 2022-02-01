@@ -1,5 +1,6 @@
 name: auth
-description: Authentication Handler package. This package will be responsible for authentication within our application.
+description: Authentication Handler package. This package will be responsible
+  for authentication within our application.
 version: 1.0.0+1
 publish_to: none
 
@@ -9,8 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_sign_in: ^5.2.3
+  http: ^0.13.4
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockito: ^5.0.17
   very_good_analysis: ^2.4.0
