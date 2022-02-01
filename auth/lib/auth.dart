@@ -1,3 +1,2 @@
+/// Authentication Library.
 library auth;
-
-export 'src/auth.dart';
