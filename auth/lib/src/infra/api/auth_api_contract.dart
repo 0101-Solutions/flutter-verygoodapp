@@ -14,7 +14,7 @@ import 'package:auth/src/constants/credential.dart';
 /// ```
 ///
 abstract class IAuthApi {
-  /// signUp method call to the external API - takes the user `Credential`.
+  /// signIn method call to the external API - takes the user `Credential`.
   Future<Result<String>> signIn(Credential credential);
 
   /// signUp method call to the external API - takes the user `Credential`.
