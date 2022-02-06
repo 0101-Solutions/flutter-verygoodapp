@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:async/async.dart';
 import 'package:auth/src/constants/credential.dart';
+import 'package:auth/src/constants/token.dart';
 import 'package:auth/src/infra/api/auth_api_contract.dart';
 import 'package:auth/src/infra/api/helpers/mapper.dart';
 
@@ -17,7 +18,7 @@ class AuthApi implements IAuthApi {
   final http.Client _client;
 
   /// The baseUrl where our endpoints should call.
-  String baseUrl;
+  final String baseUrl;
 
   @override
   Future<Result<String>> signIn(Credential credential) async {
@@ -42,7 +43,7 @@ class AuthApi implements IAuthApi {
     final response = await _client.post(
       endpoint,
       headers: {'Content-type': 'application/json'},
-      body: Mapper.toJson(credential),
+      body: jsonEncode(Mapper.toJson(credential)),
     );
 
     if (response.statusCode != 200) {
@@ -54,5 +55,24 @@ class AuthApi implements IAuthApi {
     return json['auth_token'] != null
         ? Result.value(json['auth_token'] as String)
         : Result.error(['message']);
+  }
+
+  @override
+  Future<Result<bool>> signOut(Token token) async {
+    final url = Uri.parse('$baseUrl/auth/signout');
+
+    final headers = {
+      'Content-type': 'application/json',
+      'Authorization': token.value
+    };
+
+    final response = await _client.post(
+      url,
+      headers: headers,
+    );
+
+    if (response.statusCode != 200) return Result.value(false);
+
+    return Result.value(true);
   }
 }
