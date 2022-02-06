@@ -2,8 +2,8 @@ import 'package:async/async.dart';
 import 'package:auth/src/constants/credential.dart';
 
 /// Base class containing the methods needed to interact with our external API:
-/// - signIn method call to login existing users to the app.
-/// - signUp method call to signUp/onboard users on to the app.
+/// - signIn() to login existing users to the app.
+/// - signUp() to signUp/onboard users on to the app.
 ///
 /// ```dart
 ///
