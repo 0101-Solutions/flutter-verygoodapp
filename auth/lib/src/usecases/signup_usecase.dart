@@ -3,9 +3,9 @@ import 'package:async/async.dart';
 import 'package:auth/src/constants/token.dart';
 import 'package:auth/src/domain/signup_service_contract.dart';
 
-/// Usecases where users will be signed up/added to our app.
+/// SignUpUsecase where users will be signed up/added to our app.
 class SignUpUseCase {
-  /// Injected to the constructor our class, and passed our _authservice.
+  /// Injected _authservice to the constructor in our class.
   const SignUpUseCase(this._signUpService);
 
   final ISignUpService _signUpService;
