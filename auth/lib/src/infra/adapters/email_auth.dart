@@ -54,8 +54,8 @@ class EmailAuth implements IAuthService, ISignUpService {
   }
 
   @override
-  Future<void> signOut() async {
-    return await null;
+  Future<Result<bool>> signOut(Token token) async {
+    return _api.signOut(token);
   }
 
   @override
