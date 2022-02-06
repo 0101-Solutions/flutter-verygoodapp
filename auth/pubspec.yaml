@@ -8,10 +8,12 @@ environment:
   sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
+  build_runner: ^2.1.7
   flutter:
     sdk: flutter
   google_sign_in: ^5.2.3
   http: ^0.13.4
+  integration_test: ^0.8.1
 
 
 dev_dependencies:
