@@ -7,7 +7,11 @@ environment:
   sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
+  auth:
+    path: ./auth
+    
   bloc: ^8.0.2
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
@@ -15,10 +19,12 @@ dependencies:
     sdk: flutter
   intl: ^0.17.0
 
+
 dev_dependencies:
   bloc_test: ^9.0.2
   flutter_test:
     sdk: flutter
+  mockito: ^5.0.17
   mocktail: ^0.2.0
   very_good_analysis: ^2.4.0
 
