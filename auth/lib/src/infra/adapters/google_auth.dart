@@ -41,8 +41,12 @@ class GoogleAuth implements IAuthService {
   }
 
   @override
-  Future<void> signOut() async {
-    await _googleSignIn.disconnect();
+  Future<Result<bool>> signOut(Token token) async {
+    final result = await _authApi.signOut(token);
+
+    if (result.asValue!.value) await _googleSignIn.disconnect();
+
+    return result;
   }
 
   Future _handleGoogleSignIn() async {
