@@ -31,6 +31,10 @@ class AuthApi implements IAuthApi {
     return _postCredential(endpoint, credential);
   }
 
+  /// A ` Future<Result<String>> ` that sends the Credential
+  /// to the API endpoint
+  /// and awaits a response.
+  /// If response is not statusCode 200 then its an error.
   Future<Result<String>> _postCredential(
     Uri endpoint,
     Credential credential,
@@ -48,7 +52,7 @@ class AuthApi implements IAuthApi {
     final dynamic json = jsonDecode(response.body);
 
     return json['auth_token'] != null
-        ? Result.value(json!['auth_token'] as String)
-        : Result.error(json['message'] as String);
+        ? Result.value(json['auth_token'] as String)
+        : Result.error(['message']);
   }
 }
