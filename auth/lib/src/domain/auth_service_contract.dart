@@ -8,5 +8,5 @@ abstract class IAuthService {
   Future<Result<Token>> signIn();
 
   /// The signOut() method, that signs users out of the app.
-  Future<void> signOut();
+  Future<Result<bool>> signOut(Token token);
 }
