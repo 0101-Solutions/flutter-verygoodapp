@@ -3,14 +3,15 @@ import 'package:auth/src/constants/token.dart';
 
 import 'package:auth/src/domain/auth_service_contract.dart';
 
-/// Usecases where users will be signing in to our app.
+/// SignInUsecase where users will be signing in to our app.
 class SignInUseCase {
-  /// Injected to the constructor our class, and passed our _authservice.
+  /// Injected _authservice to the constructor in our class.
   const SignInUseCase(this._authService);
 
   final IAuthService _authService;
 
-  /// Here we pass our _authService to execute user signIn()
+  /// Here we create Future execute(), which executes the signIn()
+  /// on `_authService` and returns a `Future<Result<Token>>`.
   Future<Result<Token>> execute() async {
     return _authService.signIn();
   }
