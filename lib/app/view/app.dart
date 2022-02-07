@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:verygoodapp/app/view/pages/auth/auth_page.dart';
 import 'package:verygoodapp/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -18,7 +19,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: const AppBarTheme(color: Color(0xFF13B9FF)),
         colorScheme: ColorScheme.fromSwatch(
-          accentColor: const Color(0xFF13B9FF),
+          accentColor: const Color.fromARGB(255, 190, 27, 27),
         ),
       ),
       localizationsDelegates: const [
@@ -26,7 +27,7 @@ class App extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: Container(),
+      home: const AuthPage(),
     );
   }
 }
