@@ -3,7 +3,6 @@ import 'package:async/async.dart';
 import 'package:auth/src/constants/credential.dart';
 import 'package:auth/src/constants/token.dart';
 import 'package:auth/src/domain/auth_service_contract.dart';
-import 'package:auth/src/domain/signup_service_contract.dart';
 import 'package:auth/src/infra/api/auth_api_contract.dart';
 
 /// This is class that handles authentication where the authentication type
@@ -15,16 +14,12 @@ import 'package:auth/src/infra/api/auth_api_contract.dart';
 /// ```dart
 /// // Sign In method
 /// Future<Result<Token>> signIn();
-///
-/// // Sign Up method that takes: email, name & password.
-/// Future<Result<Token>> signUp(String email, String name, String password);
-///
 /// // Sign Out removes token from local storage.
 /// Future<void> signOut();
 ///
 /// ```
-class EmailAuth implements IAuthService, ISignUpService {
-  /// Injected to the constructor EmailAuth class, by passing the AuthApi.
+class EmailAuth implements IAuthService {
+  /// Injected the constructor class the AuthApi abstraction.
   EmailAuth(this._api);
 
   final IAuthApi _api;
@@ -56,27 +51,5 @@ class EmailAuth implements IAuthService, ISignUpService {
   @override
   Future<Result<bool>> signOut(Token token) async {
     return _api.signOut(token);
-  }
-
-  @override
-  Future<Result<Token>> signUp(
-    String email,
-    String name,
-    String password,
-  ) async {
-    final credential = Credential(
-      type: AuthType.email,
-      email: email,
-      name: name,
-      password: password,
-    );
-
-    final result = await _api.signUp(credential);
-
-    if (result.isError) {
-      return Result.value(Token(result.asError.toString()));
-    }
-
-    return Result.value(Token(result.asValue!.value));
   }
 }
